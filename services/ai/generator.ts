@@ -1,39 +1,44 @@
 const Groq = require('groq-sdk');
 
-const groq = new Groq({ apiKey: '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' });
+const groq = new Groq({ apiKey: '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' });
 
-export async function geradorDesculpa(desculpa: string) {
+export async function geradorRoupa(roupas: string) {
     try {
         const chatCompletion = await groq.chat.completions.create({
             "messages": [
                 {
                     "role": "user",
-                    "content": "Estou fazendo um app onde o usuario entrará com um evento e quero responder um desculpa esfarrapada, quero que seja engraçada e que não ofenda niguem, mas seja criativo."
+                    "content": "Estou fazendo um app onde o usuário entrará com um evento e quero responder com sugestões de combinações de roupas que sejam estilosas e adequadas para a ocasião."
                 },
                 {
+                    
                     "role": "assistant",
-                    "content": "Que ideia divertida! Eu vou sugerir algumas respostas esfarrapadas engraçadas e criativas que não ofendem ninguém. Você pode usá-las como inspiração ou como elas estão:\n\n**Para eventos comuns**\n\n* \"Desculpe, estou no meio de uma crise de falta de café. Volto a funcionar assim que eu tomar um copo.\"\n* \"EstouPASSANDO POR UM MOMENTO DE REFLEXÃO PROFUNDA sobre como lidar com esse evento. Volto logo.\"\n* \"Meu sistema de resposta está atualmente indisponível devido a um problema técnico. Tente novamente mais tarde (ou não).\"\n\n**Para eventos mais sérios**\n\n* \"Estou trabalhando em uma solução criativa para esse problema. Enquanto isso, posso oferecer uma desculpa sincera e uma dose de otimismo?\"\n* \"Meu time de respostas está fazendo hora extra para te dar a melhor resposta possível. Agradeço sua paciência!\"\n* \"Eu estou gerenciando uma equipe de especialistas em desculpas para encontrar a melhor resposta possível para você. Por favor, aguarde.\"\n\n**Para eventos mais leves**\n\n* \"Estou no meio de uma pausa para dançar/ cantar/ comer um sanduíche. Volto logo!\"\n* \"Meu telefone caiu no vaso sanitário e eu estou esperando que ele seque para responder. Enquanto isso, posso oferecer uma desculpa?\"\n* \"Estou tentando encontrar a melhor forma de dizer 'não' sem ofender. Enquanto isso, posso oferecer um sorriso?\"\n\n**Para eventos mais estranhos**\n\n* \"Eu estou no meio de uma experiência interdimensional e não estou disponível no momento. Volto quando eu voltar à minha dimensão.\"\n* \"Meu resposta-bot está sendo alimentado por um time de hamsters e eles estão em greve. Por favor, aguarde.\"\n* \"Estou no meio de uma competição de desculpas com o meu chefe e preciso de um tempo para me preparar. Volto logo!\"\n\nEspero que essas sugestões te inspirem a criar respostas engraçadas e criativas para o seu app!"
+                    "content": "Ótima ideia! Vou sugerir combinações de roupas estilosas e adequadas para o evento que você mencionar. Envie o evento e eu responderei com uma combinação perfeita!"
                 },
                 {
                     "role": "user",
-                    "content": "quero te enviar o evento e você irá me responder somente a desculpa "
+                    "content": "Ir para uma festa de casamento"
                 },
                 {
                     "role": "assistant",
-                    "content": "Envie o evento e eu responderei com uma desculpa esfarrapada e engraçada!"
+                    "content": "\"Para uma festa de casamento, recomendo: \n- Um terno cinza claro com camisa branca e gravata azul-marinho.\n- Sapatos de couro preto com um cinto combinando.\n- Para um toque extra, um lenço de bolso estampado e um relógio clássico.\""
                 },
                 {
                     "role": "user",
-                    "content": "Ir para uma festa de casamento "
+                    "content": "Ir a um churrasco com amigos"
                 },
                 {
                     "role": "assistant",
-                    "content": "\"Desculpe, estou atualmente impossibilitado de ir para a festa de casamento porque meu terno está sendo reformado por um time de besouros tailandeses. Eles prometeram terminar até o final da semana que vem.\""
+                    "content": "\"Para um churrasco com amigos: \n- Uma camisa polo ou camiseta básica em tons neutros ou pastel.\n- Shorts de sarja ou jeans em um corte confortável.\n- Tênis casual ou sandálias de couro para um visual descontraído.\n- Óculos de sol e um boné para proteger do sol.\""
                 },
                 {
                     "role": "user",
-                    "content": desculpa
+                    "content": "Ir a uma reunião de negócios"
                 },
+                {
+                    "role": "assistant",
+                    "content": "\"Para uma reunião de negócios: \n- Um blazer preto ou azul-marinho com uma camisa social branca.\n- Calças de alfaiataria combinando com sapatos sociais.\n- Uma gravata discreta para complementar o look formal.\n- Leve uma pasta ou bolsa executiva para documentos.\""
+                }
             ],
             "model": "llama-3.1-70b-versatile",
             "temperature": 1,
@@ -42,34 +47,31 @@ export async function geradorDesculpa(desculpa: string) {
 
         return chatCompletion.choices[0]?.message.content;
     } catch (error) {
+        console.log(error);
+        const roupas = [
+            "Camiseta branca básica, calça jeans e tênis branco.",
+            "Blusa de tricô bege, saia midi e botas pretas.",
+            "Camisa social azul clara, calça de alfaiataria cinza e sapatos marrons.",
+            "Jaqueta jeans, camiseta preta, calça skinny preta e tênis esportivo.",
+            "Vestido floral leve, sandálias de tiras e uma bolsa pequena.",
+            "Blusa de manga longa listrada, calça preta e sapatos oxford.",
+            "Camisa xadrez, camiseta branca por baixo, calça cargo e botas.",
+            "Casaco oversized bege, leggings pretas e tênis casual.",
+            "T-shirt gráfica, shorts jeans e chinelos confortáveis.",
+            "Regata cinza, bermuda de sarja e mocassim.",
+            "Blazer preto, camiseta básica branca, calça jeans escura e tênis casual.",
+            "Sweater verde, saia plissada preta e sapatilhas.",
+            "Camiseta tie-dye, calça de moletom cinza e chinelos de pelúcia.",
+            "Camisa estampada tropical, shorts de linho branco e sandálias.",
+            "Blusa de gola alta preta, jardineira jeans e tênis branco.",
+            "Camiseta de algodão pastel, calça jogger e tênis esportivo.",
+            "Jaqueta de couro preta, camiseta cinza, calça preta e botas de cano curto.",
+            "Blusa rendada, calça pantalona e sandálias de salto bloco.",
+            "Cardigan longo, regata branca, calça legging e botas de montaria.",
+            "Moletom com capuz, calça de moletom e tênis slip-on."
+        ];
 
-        const desculpas = [
-            "Poxa, justo hoje meu hamster ficou doente...",
-            "Sabe o que é... Um alienígena sequestrou meu celular!",
-            "Meu vizinho está fazendo uma festa de karaokê e preciso vigiar o volume",
-            "Meu gato deletou minha agenda sem querer",
-            "Estou em uma missão secreta para salvar o mundo",
-            "Estou treinando uma equipe de formigas para o circo",
-            "Minha sombra decidiu tirar um dia de folga",
-            "Preciso meditar com meus cactos para melhorar sua autoestima",
-            "Meu guarda-roupa está em greve e não libera minhas roupas",
-            "Estou ensinando matemática avançada pro meu papagaio",
-            "Minha conexão com a realidade está instável hoje",
-            "Preciso resolver uma disputa territorial entre meus travesseiros",
-            "Meu relógio decidiu contar o tempo de trás pra frente",
-            "Estou em negociação com extraterrestres sobre o preço do pão de queijo",
-            "Minha geladeira está tendo um ataque de ciúmes do micro-ondas",
-            "Preciso participar de uma reunião urgente com meus amigos imaginários",
-            "Meu espelho está refletindo uma versão alternativa de mim mesmo",
-            "Estou catalogando os diferentes tipos de silêncio em casa",
-            "Minha escova de dentes declarou independência",
-            "Preciso ajudar meu café a superar o medo de altura",
-            "Minha porta está num momento filosófico e não quer abrir",
-            "Estou desenvolvendo um algoritmo para entender por que o chinelo sempre some",
-            "Minha calculadora está tendo um colapso emocional",
-            "Preciso mediar uma discussão entre meu sofá e minha poltrona"]
-
-        return desculpas[Math.floor(Math.random() * desculpas.length)]
+        return roupas[Math.floor(Math.random() * roupas.length)]
     }
 }
 

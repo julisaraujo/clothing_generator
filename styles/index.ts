@@ -9,14 +9,14 @@ const styles = StyleSheet.create({
         padding: 20
     },
     titulo: {
-        fontSize: 32,
+        fontSize: 27,
         fontWeight: 'bold',
-        color: '#FF6B6B',
+        color: '#3FB6A3',
         marginBottom: 10
     },
     subtitulo: {
         fontSize: 16,
-        color: '#666',
+        color: '#3FB6A3',
         fontStyle: 'italic',
         marginBottom: 20
     },
